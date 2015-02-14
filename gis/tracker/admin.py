@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tracker.models import Person, Object, Contact
+from tracker.models import *
 
 
 class EntityAdmin(admin.ModelAdmin):
@@ -10,5 +10,6 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('time', 'a', 'b')
 
 admin.site.register(Person)
+admin.site.register(Region)
 admin.site.register(Object, EntityAdmin)
 admin.site.register(Contact, ContactAdmin)

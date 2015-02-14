@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
-from tracker.models import Object, Person, Contact
+from tracker.models import *
 from tracker.serializers import ObjectSerializer, PersonSerializer
 
 import datetime
@@ -93,6 +93,33 @@ def register_view(request):
     else:
         form = RegistrationForm()
         return render(request, 'tracker/register.html', {'form': form})
+
+
+class RegionForm(forms.Form):
+    """
+    HTML Form to be displayed when adding a new registered user.
+    """
+    first_name = forms.CharField(label='Name', max_length=30)
+    last_name = forms.CharField(label='Country', max_length=30)
+    number = forms.CharField(label='City', max_length=30)
+
+
+def region_view(request):
+    """
+    Handles viewing of the registration form.
+    """
+    if request.method == 'POST':
+        form = RegionForm(request.POST)
+        if form.is_valid():
+            region = Region(name=form.cleaned_data['first_name'],
+                            country=form.cleaned_data['last_name'],
+                            city=form.cleaned_data['number'])
+            region.save()
+            return HttpResponseRedirect('/tracker/')
+        return HttpResponseRedirect('/tracker/')
+    else:
+        form = RegionForm()
+        return render(request, 'tracker/region.html', {'form': form})
 
 
 def proximity_view(request):

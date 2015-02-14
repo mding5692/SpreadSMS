@@ -15,6 +15,16 @@ class Person(models.Model):
         return self.first_name + " " + self.last_name + " " + self.number
 
 
+class Region(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=30)
+    country = models.CharField(max_length=30)
+    city = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name + " " + self.country + " " + self.city
+
+
 class Object(models.Model):
     person_id = models.ForeignKey(Person)
     date = models.DateTimeField(default=timezone.now(), blank=True)
