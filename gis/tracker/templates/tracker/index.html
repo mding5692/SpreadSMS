@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>User Interface</title>
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </head>
+
+    <body onload="init({{entities}});">
+        <h1> Julian The Great </h1>
+        <p> Welcome to my amazing UI </p>
+        <p id="xposi"></p>
+        <p id="yposi"></p>
+        <p id="test"></p>
+        <canvas id="canvas" width="500" height="500">
+            {% load staticfiles %}
+            <script src="{% static "tracker/js/tracker.js" %}"></script>
+        </canvas>
+    </body>
+
+</html>
