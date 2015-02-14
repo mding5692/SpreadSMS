@@ -137,6 +137,12 @@ def process_proximity(request, text, format=None):
     message = client.messages.create(to="+19058695733", from_=my_twilio_number, body=text)
     return HttpResponseRedirect('/tracker/')
 
+from django.http import HttpResponse
+import twilio.twiml
+def process_sms(request):
+    resp = twilio.twiml.Response()
+    resp.message("Hello, Mobile Monkey")
+    return HttpResponse(str(resp))
 
 def homepage(request):
     """

@@ -5,6 +5,7 @@ from tracker import views
 
 urlpatterns = patterns('',
                        url(r'^$', views.homepage, name='homepage'),
+                       url(r'^sms/$', views.process_sms, name='sms'),
                        url(r'^regions/$', views.region_view, name='regions'),
                        url(r'^tracks/$', views.AllEntities.as_view(), name='tracks'),
                        url(r'^tracks_api/(?P<start>.*)/(?P<end>.*)/$', views.EntityRange.as_view(), name='tracks_api_range'),
