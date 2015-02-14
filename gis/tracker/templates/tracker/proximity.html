@@ -8,7 +8,7 @@
         function call_counter() {
             var text = $('textarea#mytextarea').val();
             alert(text);
-            $.get('processProximity/' + text, function (data, status) {
+            $.get('broadcast/' + text, function (data, status) {
                 alert("Text: " + status);
             });
         }

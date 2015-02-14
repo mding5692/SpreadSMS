@@ -13,44 +13,6 @@ from tracker.serializers import ObjectSerializer, PersonSerializer
 
 import datetime
 
-
-class AllEntities(APIView):
-    """
-    Handles adding entity locations.
-    Handles retrieving entity locations.
-    """
-    def get(self, request, format=None):
-        entity = Object.objects.all()
-        serializer = ObjectSerializer(entity, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = ObjectSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class EntityRange(APIView):
-    """
-    Handle retrieving entity locations in a given datetime range.
-    """
-    def get_object(self, start, end):
-        try:
-            start_date = datetime.datetime.strptime(start, "%Y-%m-%dT%H:%M:%S")
-            end_date = datetime.datetime.strptime(end, "%Y-%m-%dT%H:%M:%S")
-            return Object.objects.filter(date__range=(start_date, end_date))
-        except Object.DoesNotExist:
-            raise Http404
-
-    def get(self, request, start, end, format=None):
-        entities = self.get_object(start, end)
-        serializer = ObjectSerializer(entities, many=True)
-        print(serializer.data)
-        return Response(serializer.data)
-
-
 class RegistrationApi(APIView):
     """
     Handle retrieving and adding registered users.

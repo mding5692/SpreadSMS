@@ -4,7 +4,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', lambda r: HttpResponseRedirect('tracker/proximity')),
+    url(r'^$', lambda r: HttpResponseRedirect('tracker/send')),
     url(r'^tracker/', include('tracker.urls', namespace="tracker")),
     url(r'^admin/', include(admin.site.urls)),
 )
