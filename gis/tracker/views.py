@@ -129,7 +129,6 @@ def proximity_view(request):
     return render(request, 'tracker/proximity.html')
 
 from twilio.rest import TwilioRestClient
-import twilio.twiml
 def process_proximity(request, text, format=None):
     account_sid = "AC8de5647be33d99d308304fa8e883b576"
     auth_token = "4c4d9a787a1cb511f0e84a9c43863466"
@@ -138,12 +137,6 @@ def process_proximity(request, text, format=None):
     message = client.messages.create(to="+19058695733", from_=my_twilio_number, body=text)
     return HttpResponseRedirect('/tracker/')
 
-from django.http import HttpResponse
-def process_sms(request):
-    request.
-    resp = twilio.twiml.Response()
-    resp.message("Hello, Mobile Monkey")
-    return HttpResponse(str(resp))
 
 def homepage(request):
     """
