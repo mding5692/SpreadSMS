@@ -102,16 +102,17 @@ def process_proximity(request, text, format=None):
 from django.http import HttpResponse
 import twilio.twiml
 def process_sms(request):
+    from_number = request.values.get('From')
     resp = twilio.twiml.Response()
-    resp.message("Hello, Mobile Monkey")
+    resp.message("Hello, Mobile Monkey" + from_number)
     return HttpResponse(str(resp))
 
 def homepage(request):
     """
     Homepage redirect frorgot why
     """
-    entity = Object.objects.all()
-    serializer = ObjectSerializer(entity, many=True)
+    entity = Person.objects.all()
+    serializer = PersonSerializer(entity, many=True)
     entities = serializer.data
-    return render(request, 'tracker/index.html', {'entities': entities})
+    return render(request, 'tracker/index.html', {'entities': entity})
 
