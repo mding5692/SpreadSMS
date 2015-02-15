@@ -91,12 +91,15 @@ def proximity_view(request):
     return render(request, 'tracker/proximity.html')
 
 from twilio.rest import TwilioRestClient
-def process_proximity(request, text, format=None):
+def process_proximity(request, text, regionid, format=None):
+    print("REGION", regionid)
+    designated_people = Person.objects.filter(region=regionid)
     account_sid = "AC8de5647be33d99d308304fa8e883b576"
     auth_token = "4c4d9a787a1cb511f0e84a9c43863466"
     my_twilio_number = "+12897685697"
     client = TwilioRestClient(account_sid, auth_token)
-    message = client.messages.create(to="+19058695733", from_=my_twilio_number, body=text)
+    for person in designated_people:
+        message = client.messages.create(to=person.number, from_=my_twilio_number, body=text)
     return HttpResponseRedirect('/tracker/')
 
 from django.http import HttpResponse

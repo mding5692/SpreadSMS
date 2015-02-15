@@ -34,11 +34,9 @@
     <script>
         function send_message() {
             var text = $('textarea#mytextarea').val();
-            var region =  $('#myForm').find('input[id="region"]').text();
-            var test = $('#region option:selected').val();
-            alert(test);
+            var region = $('#region option:selected').val();
             alert(text);
-            $.get('broadcast/' + text, function (data, status) {
+            $.get('broadcast/' + text +'/'+region, function (data, status) {
                 alert("Text: " + status);
             });
         }
@@ -149,15 +147,16 @@
                 <h2>{{feed.title}}</h2><p>{{feed.date}}</p>
                 <!--
                 <form id="myForm">
-                -->
+
 
                 <input type="text" id="number">
-
+                -->
                 <select id="region" name="region">
                 {% for entry in entities %}
                     <option value="{{ entry.id }}">{{ entry.name }}</option>
                 {% endfor %}
                 </select>
+                </br>
                 <!--
                 </form>
                 -->
@@ -221,10 +220,9 @@
 
     <!-- /.container -->
 
-    <!-- AngularJS -->
-    <!--  -->
+    <!-- AngularJS
     <script src="{% static "tracker/js/angular.min.js" %}"></script>
-
+    -->
 
     <script src="{% static "tracker/js/feedApp.js" %}"></script>
 
