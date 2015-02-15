@@ -31,7 +31,18 @@
     <![endif]-->
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        function send_message() {
+            var text = $('textarea#mytextarea').val();
+            var number = "+1" + $('#myForm').find('input[id="number"]').val();
 
+            alert(number);
+            alert(text);
+            $.get('broadcast/' + text, function (data, status) {
+                alert("Text: " + status);
+            });
+        }
+     </script>
 </head>
 
 <body>
@@ -116,38 +127,49 @@
     
     
     
-    
-    
-    
+
+
+
     <!-- Feed Section -->
     <section id="feed" style="height:575px" ng-app="feedApp">
     <!-- Page Content -->
     <div class="container">
 
-        <div class="row">
-            <div id="clarity" class ="col-sm-4">
-                <h1> One text away from Clarity.</h1>
-           </div>
-        
-            <div class ="col-sm-4" ng-controller="feedCtrl">
-                
-                <!-- The feed system -->
-                <ul class="feeds">
-                    
-                    <li ng-repeat="feed in feeds">
-                    
-                        <h2>{{feed.title}}</h2><p>{{feed.date}}</p> 
-                    
-                    
-                    </li>
-                
-                </ul>
-                
+    <div class="row">
+        <div id="clarity" class ="col-sm-4">
+            <h1> One text away from Clarity.</h1>
+        </div>
 
-            </div>
+        <div class ="col-sm-4" ng-controller="feedCtrl">
+            <!-- The feed system -->
+            <ul class="feeds">
+                <!--
+                <li ng-repeat="feed in feeds">
+                -->
+                <h2>{{feed.title}}</h2><p>{{feed.date}}</p>
+                <form id="myForm">
+                <input type="text" id="number">
+                <select id="region">
+                {% for entry in items %}
+                    <option value="{{ entry.id }}">{{ entry.name }}</option>
+                {% endfor %}
+                </select>
+                </form>
+                <textarea id="mytextarea" rows="20"></textarea>
 
-            <div class ="col-sm-4">
-           </div>
+                </br>
+                <button onclick="send_message();">
+                    Send Text
+                </button>
+                <!--
+                </li>
+                -->
+            </ul>
+        </div>
+
+        <div class ="col-sm-4">
+
+        </div>
 
     </div>
     </section>
