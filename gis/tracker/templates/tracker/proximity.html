@@ -7,6 +7,9 @@
     <script>
         function call_counter() {
             var text = $('textarea#mytextarea').val();
+            var number = "+1" + $('#myForm').find('input[id="number"]').val();
+
+            alert(number);
             alert(text);
             $.get('broadcast/' + text, function (data, status) {
                 alert("Text: " + status);
@@ -15,6 +18,9 @@
      </script>
 </head>
 <body>
+<form id="myForm">
+<input type="text" id="number">
+</form>
 <textarea id="mytextarea"></textarea>
 Hi
 <button onclick="call_counter();">

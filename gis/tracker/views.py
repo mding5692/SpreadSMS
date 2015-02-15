@@ -114,5 +114,5 @@ def homepage(request):
     entity = Person.objects.all()
     serializer = PersonSerializer(entity, many=True)
     entities = serializer.data
-    return render(request, 'tracker/index.html', {'entities': entity})
+    return render(request, 'tracker/dashboard.html', {'entities': entity})
 

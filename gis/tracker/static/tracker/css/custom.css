@@ -1,0 +1,47 @@
+#home {
+ 
+    text-align: center;
+    padding: 10px;
+       
+}
+
+#home #title .h1 {
+
+    margin: 20px;
+    
+}
+
+#clarity {
+    
+    color: #fff;
+    background-size: contain
+ background-size: 400px 400x;
+    height:500px;
+    width:500px;
+    background-repeat: no-repeat;
+ background-image: url("https://s3.amazonaws.com/StartupStockPhotos/20140808_StartupStockPhotos/72.jpg")
+ 
+}
+    
+     
+#logIcon{
+padding-bottom:5px;
+padding-right:30px;
+  font-size: 3.2em;
+}
+
+table {
+ padding: 10px;
+ text-align: center;
+margin: 120px;
+}
+
+th {
+    padding: 10px;
+    margin: 10px;
+}
+
+td {
+    padding: 10px;
+    margin: 10px;
+}
