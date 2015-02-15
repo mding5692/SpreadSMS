@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 
 from tracker.models import *
-from tracker.serializers import ObjectSerializer, PersonSerializer
+from tracker.serializers import *
 
 import datetime
 
@@ -111,8 +111,8 @@ def homepage(request):
     """
     Homepage redirect frorgot why
     """
-    entity = Person.objects.all()
-    serializer = PersonSerializer(entity, many=True)
+    entity = Region.objects.all()
+    serializer = RegionSerializer(entity, many=True)
     entities = serializer.data
     return render(request, 'tracker/dashboard.html', {'entities': entity})
 

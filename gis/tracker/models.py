@@ -4,17 +4,6 @@ from django.db import models
 from django.utils import timezone
 
 
-class Person(models.Model):
-    id = models.IntegerField(primary_key=True)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    number = models.CharField(max_length=40)
-    registration_date = models.DateTimeField(default=timezone.now(), blank=True)
-
-    def __str__(self):
-        return self.first_name + " " + self.last_name + " " + self.number
-
-
 class Region(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=30)
@@ -23,6 +12,18 @@ class Region(models.Model):
 
     def __str__(self):
         return self.name + " " + self.country + " " + self.city
+
+
+class Person(models.Model):
+    id = models.IntegerField(primary_key=True)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    number = models.CharField(max_length=40)
+    registration_date = models.DateTimeField(default=timezone.now(), blank=True)
+    region = models.ForeignKey(Region, related_name='region')
+
+    def __str__(self):
+        return self.first_name + " " + self.last_name + " " + self.number
 
 
 class Object(models.Model):
