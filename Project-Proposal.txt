@@ -1,0 +1,25 @@
+Project Name: SpreadSMS
+
+Description: Enables people without access to internet on their phones to use SMS to send their medical inquiries to a web server which posts to a web application that broadcasts these messages. Medical professionals from around the world will review these posts and then reply. The highest ranked message will be sent back using SMS.
+
+Technologies/Tools used:
+-Python/Django Framework for constructing the web application that displays the messages
+-Twilio API/RapidSMS Framework for receiving and sending SMS messages to backend.
+
+Diagram:
+
+  Message is sent to Web application:
+  ============        ============      =============
+  |          |        |          |      |           |
+  | SMS      |   ===> |   Web    | ===> |   Web     |
+  | message  |        |  Server  |      |   App     |
+  |          |        |          |      |           |
+  ============        ============      ============= 
+
+Specifications:
+
+Requirements:
+
+Scope:
+  
+Active Contributors: mding5692, mtjandra
