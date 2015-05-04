@@ -11,4 +11,7 @@ Consideration:
 -SMSsync API
 -FrontlineCloud Platform?
 
+RapidSMS with VUMI
+
+or Plivo
  
